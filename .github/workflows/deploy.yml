@@ -7,7 +7,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.release.target_commitish == 'gh-pages'
     
     steps:
       # Шаг 1: Получаем код из репозитория
