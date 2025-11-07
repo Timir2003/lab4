@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Шаг 1: Получаем код из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Шаг 2: Настраиваем Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Шаг 3: Создаем папку с версией и копируем туда файлы
+      - name: Prepare versioned deployment
+        run: |
+          mkdir -p dist/v${{ github.event.release.tag_name }}
+          cp -r *.html ru en dist/v${{ github.event.release.tag_name }}/
+
+      # Шаг 4: Деплоим на GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: true
