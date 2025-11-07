@@ -7,10 +7,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.event.release.target_commitish == 'gh-pages'
+    
     steps:
       # Шаг 1: Получаем код из репозитория
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: gh-pages
 
       # Шаг 2: Настраиваем Node.js
       - name: Setup Node.js
