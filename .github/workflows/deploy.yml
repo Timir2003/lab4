@@ -24,7 +24,7 @@ jobs:
           echo "Содержимое _site:"
           ls -R _site
 
-      # Шаг 4: Деплоим на GitHub Pages
+      # Деплоим на GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
