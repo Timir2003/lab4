@@ -24,13 +24,15 @@ jobs:
       # Шаг 3: Создаем папку с версией и копируем туда файлы
       - name: Prepare versioned deployment
         run: |
-          mkdir -p dist/${{ github.event.release.tag_name }}
-          cp -r *.html ru en dist/v${{ github.event.release.tag_name }}/
+          mkdir -p _site
+          cp -R index.html ru en _site/
+          echo "Содержимое _site:"
+          ls -R _site
 
       # Шаг 4: Деплоим на GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./_site
           keep_files: true
