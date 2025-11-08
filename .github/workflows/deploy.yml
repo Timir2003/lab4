@@ -16,14 +16,16 @@ jobs:
     steps:
       - name: Checkout repository
         run: |
+          cd /home
           git clone https://github.com/Timir2003/lab4.git
-          cd /usr/bin/bash
+          
         
       - name: Determine release name
         run: echo "RELEASE_NAME=${GITHUB_REF_NAME}" >> $GITHUB_ENV
 
       - name: Prepare site files
         run: |
+          cd /home
           mkdir -p _site
           cp -R index.html ru en _site/
           echo "Содержимое _site:"
