@@ -2,7 +2,9 @@ name: Deploy site on release
 
 on:
   release:
-    types: [published]
+    types: [publish]
+  pull-request:
+    branches: [main]
 
 permissions:
   contents: write
@@ -10,10 +12,11 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-
+        run: git clone https://github.com/Timir2003/lab4.git
+        
       - name: Determine release name
         run: echo "RELEASE_NAME=${GITHUB_REF_NAME}" >> $GITHUB_ENV
 
