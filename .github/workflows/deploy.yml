@@ -18,8 +18,12 @@ jobs:
         run: | 
           git clone https://github.com/Timir2003/lab4.git
           pwd
+  
+      - name: Checkout
+        run: |
+          cd /home/runner/work/lab4/lab4
+          ls
           
-        
       - name: Determine release name
         run: echo "RELEASE_NAME=${GITHUB_REF_NAME}" >> $GITHUB_ENV
 
