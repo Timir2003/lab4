@@ -21,8 +21,8 @@ jobs:
   
       - name: Checkout
         run: |
-          cd /home/runner/work/lab4/lab4/lab4
-          ls
+          cd /home/runner/work/lab4/lab4
+          ls -R lab4
           
       - name: Determine release name
         run: echo "RELEASE_NAME=${GITHUB_REF_NAME}" >> $GITHUB_ENV
