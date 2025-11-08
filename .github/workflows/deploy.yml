@@ -15,11 +15,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        run: |
-          pwd
-          ls
-          cd /home
-          git clone https://github.com/Timir2003/lab4.git
+        run: git clone https://github.com/Timir2003/lab4.git
           
         
       - name: Determine release name
@@ -27,7 +23,7 @@ jobs:
 
       - name: Prepare site files
         run: |
-          cd /home
+          cd /home/runner/work/lab4
           mkdir -p _site
           cp -R index.html ru en _site/
           echo "Содержимое _site:"
