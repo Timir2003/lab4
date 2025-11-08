@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository
         run: |
+          pwd
+          ls
           cd /home
           git clone https://github.com/Timir2003/lab4.git
           
